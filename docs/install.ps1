@@ -2,8 +2,8 @@
 # Source: https://github.com/jd4rider/bubble-wrap
 $ErrorActionPreference = 'Stop'
 
-$url = 'https://github.com/jd4rider/bubble-wrap/releases/download/v0.1.0/Bubble-Wrap-win-setup.exe'
-$expected = '61CC22E771BF534CA4250F5B85B8AAAEAD2A7B0DB9C5B10021F5C2BA78AE22DC'
+$url = 'https://github.com/jd4rider/bubble-wrap/releases/download/v0.2.0/Bubble-Wrap-win-setup.exe'
+$expected = 'B4369638FD863652620FEB281296D2BE9226301EDAB4AF17F948DC3DBFD3107B'
 $installer = Join-Path $env:TEMP 'Bubble-Wrap-win-setup.exe'
 
 Write-Host 'Downloading Bubble Wrap...'
