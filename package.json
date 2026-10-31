@@ -1,7 +1,7 @@
 {
   "name": "bubble-wrap",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A whole sheet of tiny, satisfying bubble wrap pops.",
   "type": "module",
   "main": "electron/main.cjs",
@@ -47,11 +47,16 @@
       "target": [
         {
           "target": "dmg",
-          "arch": ["x64", "arm64"]
+          "arch": [
+            "x64",
+            "arm64"
+          ]
         },
         {
           "target": "dir",
-          "arch": ["x64"]
+          "arch": [
+            "x64"
+          ]
         }
       ]
     },
@@ -64,7 +69,9 @@
       "target": [
         {
           "target": "nsis",
-          "arch": ["x64"]
+          "arch": [
+            "x64"
+          ]
         }
       ]
     },

@@ -2,7 +2,7 @@
   const config = window.BUBBLE_WRAP_CONFIG || {}
 
   document.querySelectorAll('[data-version]').forEach((element) => {
-    element.textContent = config.version || '0.1.0'
+    element.textContent = config.version || '0.2.0'
   })
 
   // Decorative mini sheet. Popping it is the fastest way to explain the app.

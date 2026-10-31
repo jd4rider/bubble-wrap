@@ -8,7 +8,7 @@
 // Payment Link, Lemon Squeezy, Paddle, etc.) into checkoutUrl. Until then the
 // button stays disabled and no payment is attempted.
 window.BUBBLE_WRAP_CONFIG = {
-  version: '0.1.0',
+  version: '0.2.0',
   siteUrl: 'https://bubblewrapgame.online/',
   repoUrl: 'https://github.com/jd4rider/bubble-wrap',
   adsenseClient: '',

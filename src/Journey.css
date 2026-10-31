@@ -1,0 +1,342 @@
+.journey-app {
+  gap: clamp(6px, 1.3vh, 14px);
+}
+
+.header.compact h1 {
+  font-size: clamp(1.4rem, 3.2vh, 2.2rem);
+}
+
+.journey-bar {
+  width: min(880px, 100%);
+  display: flex;
+  align-items: center;
+  gap: 10px 18px;
+  flex-wrap: wrap;
+  padding: 8px clamp(12px, 1.6vw, 20px);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.66);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 12px 30px -18px rgba(49, 46, 129, 0.5);
+  backdrop-filter: blur(8px);
+}
+
+.journey-bar .controls {
+  margin-left: auto;
+}
+
+.coin-pill,
+.star-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 11px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+.coin-pill {
+  color: #92400e;
+  background: rgba(251, 191, 36, 0.18);
+}
+
+.star-pill {
+  color: #4338ca;
+  background: rgba(99, 102, 241, 0.14);
+}
+
+.journey-scroll {
+  width: min(920px, 100%);
+  height: 100%;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 2px 4px 8px;
+  scrollbar-width: thin;
+}
+
+.section-title {
+  margin: 6px 0 10px;
+  font-size: 1rem;
+  text-align: left;
+  letter-spacing: -0.01em;
+}
+
+.section-note {
+  margin-left: 6px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #7b82a6;
+}
+
+.level-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 10px;
+}
+
+.level-card {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 16px 26px -24px rgba(49, 46, 129, 0.7);
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.level-card:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 30px -24px rgba(49, 46, 129, 0.9);
+}
+
+.level-card:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.level-number {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #6366f1;
+}
+
+.level-card strong {
+  font-size: 0.92rem;
+  letter-spacing: -0.01em;
+}
+
+.level-meta {
+  font-size: 0.74rem;
+  color: #6b7299;
+}
+
+.level-stars {
+  margin-top: auto;
+  padding-top: 4px;
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  color: #f59e0b;
+}
+
+.shop-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 10px;
+}
+
+.shop-card {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 13px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.74);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+}
+
+.shop-icon {
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+
+.shop-desc {
+  font-size: 0.76rem;
+  color: #6b7299;
+}
+
+.shop-owned {
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: #4338ca;
+}
+
+.button.small {
+  align-self: flex-start;
+  padding: 7px 12px;
+  font-size: 0.76rem;
+}
+
+.journey-hud {
+  width: min(880px, 100%);
+  display: flex;
+  align-items: center;
+  gap: 8px 18px;
+  flex-wrap: wrap;
+  padding: 8px clamp(12px, 1.6vw, 20px);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.66);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 12px 30px -18px rgba(49, 46, 129, 0.5);
+  backdrop-filter: blur(8px);
+}
+
+.hud-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #7b82a6;
+  font-variant-numeric: tabular-nums;
+}
+
+.hud-stat strong {
+  font-size: 1.05rem;
+  letter-spacing: 0;
+  color: #312e81;
+}
+
+.hud-stat strong.danger {
+  color: #dc2626;
+}
+
+.journey-hud .progress {
+  flex: 1 1 140px;
+}
+
+.journey-hud .controls {
+  margin-left: auto;
+  align-items: center;
+}
+
+.power-bar {
+  width: min(880px, 100%);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.power-button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 12px 20px -22px rgba(49, 46, 129, 0.8);
+  color: #3730a3;
+  font: inherit;
+  font-size: 0.84rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.12s ease, opacity 0.12s ease;
+}
+
+.power-button:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.power-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.42;
+}
+
+.power-count {
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(99, 102, 241, 0.14);
+  font-size: 0.74rem;
+}
+
+.sheet-locked,
+.sheet-locked .bubble {
+  cursor: default;
+}
+
+.result-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(30, 27, 75, 0.36);
+  backdrop-filter: blur(6px);
+}
+
+.result-card {
+  width: min(400px, 100%);
+  padding: 26px;
+  border-radius: 26px;
+  background: linear-gradient(150deg, #ffffff, #eef2ff);
+  box-shadow: 0 34px 60px -24px rgba(30, 27, 75, 0.7);
+  text-align: center;
+}
+
+.result-kicker {
+  margin: 0;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #6366f1;
+}
+
+.result-card h2 {
+  margin: 6px 0 8px;
+  font-size: 1.35rem;
+  letter-spacing: -0.02em;
+}
+
+.result-stars {
+  margin: 0 0 6px;
+  color: #f59e0b;
+  font-size: 1.6rem;
+  letter-spacing: 4px;
+}
+
+.result-card p {
+  margin: 6px 0;
+  font-size: 0.9rem;
+  color: #565e8a;
+}
+
+.result-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+@media (max-width: 560px) {
+  .journey-bar .controls {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .journey-bar .controls .button {
+    flex: 1;
+  }
+
+  .level-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .shop-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .power-button {
+    flex: 1 1 28%;
+    justify-content: center;
+    padding: 8px 10px;
+    font-size: 0.76rem;
+  }
+
+  .result-actions .button {
+    flex: 1 1 100%;
+  }
+}

@@ -2,6 +2,8 @@
 
 A tiny pop game — a 12 × 9 sheet of bubble wrap you can pop by clicking or dragging — available in the browser and as a native Electron app for macOS and Windows. Each pop plays a short synthesized sound via the Web Audio API (no audio files).
 
+Classic mode is the zen full sheet. Journey mode adds five timed levels, three power-ups, coins, star ratings, and persistent progress. The desktop app stores Journey progress in SQLite under the app's user-data folder; the web build uses IndexedDB with a localStorage fallback.
+
 - Play online: <https://bubblewrapgame.online/play/>
 - Site and downloads: <https://bubblewrapgame.online/>
 - Releases: <https://github.com/jd4rider/bubble-wrap/releases>
@@ -14,6 +16,8 @@ npm run dev
 ```
 
 Click or drag across the sheet. Press `P` for a random pop, "Fresh sheet" to reset, and "Sound on/off" to mute.
+
+**Journey mode:** pick a level, beat the bubble target before the clock runs out, and spend coins on Burst, Chain, and Time Boost. A first clear awards coins and a random power-up; stars and unlocks are saved.
 
 ## Install
 
@@ -50,6 +54,8 @@ npm run build:web  # browser build into docs/play for GitHub Pages
 ```
 
 The Windows installer is built by `.github/workflows/windows-build.yml` on a `windows-latest` runner and uploaded as an artifact.
+
+Journey persistence lives in `electron/journey-db.cjs` (SQLite via `node:sqlite`) and is exposed to the sandboxed renderer through `electron/preload.cjs`. The web equivalent is `src/storage.js`.
 
 ## Homebrew tap
 

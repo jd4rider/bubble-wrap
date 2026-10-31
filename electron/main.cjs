@@ -1,7 +1,9 @@
-const { app, BrowserWindow, shell } = require('electron')
+const { app, BrowserWindow, ipcMain, shell } = require('electron')
 const path = require('node:path')
+const { createJourneyStore } = require('./journey-db.cjs')
 
 const isMac = process.platform === 'darwin'
+let journeyStore = null
 
 function createWindow() {
   const win = new BrowserWindow({
@@ -19,6 +21,7 @@ function createWindow() {
       nodeIntegration: false,
       sandbox: true,
       spellcheck: false,
+      preload: path.join(__dirname, 'preload.cjs'),
     },
   })
 
@@ -32,6 +35,11 @@ function createWindow() {
 }
 
 app.whenReady().then(() => {
+  journeyStore = createJourneyStore(path.join(app.getPath('userData'), 'journey.sqlite'))
+  ipcMain.handle('journey:load', () => journeyStore.load())
+  ipcMain.handle('journey:save', (_event, state) => journeyStore.save(state))
+  ipcMain.handle('journey:reset', () => journeyStore.reset())
+
   createWindow()
 
   app.on('activate', () => {
