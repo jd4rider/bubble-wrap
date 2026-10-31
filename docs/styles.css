@@ -398,6 +398,25 @@ footer a:hover {
   color: #7b82a6;
 }
 
+pre {
+  margin: 10px 0 0;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: rgba(30, 27, 75, 0.06);
+  border: 1px solid var(--line);
+  overflow-x: auto;
+}
+
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.85em;
+}
+
+.install h3 {
+  margin: 18px 0 0;
+  font-size: 0.95rem;
+}
+
 @media (max-width: 600px) {
   .topbar nav a:not(:last-child) {
     display: none;

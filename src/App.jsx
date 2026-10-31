@@ -5,6 +5,7 @@ const COLS = 12
 const ROWS = 9
 const TOTAL = COLS * ROWS
 const INDEXES = Array.from({ length: TOTAL }, (_, index) => index)
+const IS_ELECTRON = navigator.userAgent.includes('Electron')
 
 export default function App() {
   const [popped, setPopped] = useState(() => new Set())
@@ -169,6 +170,11 @@ export default function App() {
             Freebuff
           </a>
         </span>
+        {!IS_ELECTRON && (
+          <span className="credit">
+            <a href="https://jd4rider.github.io/bubble-wrap/#download">Get the desktop app</a>
+          </span>
+        )}
       </p>
     </main>
   )

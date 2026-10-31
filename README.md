@@ -1,8 +1,12 @@
 # Bubble Wrap
 
-A tiny React toy — a 12 × 9 sheet of bubble wrap you can pop by clicking or dragging — packaged as a native macOS Electron app. Each pop plays a short synthesized sound via the Web Audio API (no audio files).
+A tiny pop game — a 12 × 9 sheet of bubble wrap you can pop by clicking or dragging — available in the browser and as a native Electron app for macOS and Windows. Each pop plays a short synthesized sound via the Web Audio API (no audio files).
 
-## Run in the browser
+- Play online: <https://jd4rider.github.io/bubble-wrap/play/>
+- Site and downloads: <https://jd4rider.github.io/bubble-wrap/>
+- Releases: <https://github.com/jd4rider/bubble-wrap/releases>
+
+## Play in the browser
 
 ```bash
 npm install
@@ -11,48 +15,52 @@ npm run dev
 
 Click or drag across the sheet. Press `P` for a random pop, "Fresh sheet" to reset, and "Sound on/off" to mute.
 
-## Run as a desktop app
+## Install
+
+**Homebrew (macOS):**
 
 ```bash
-npm run start
+brew install --cask jd4rider/bubble-wrap/bubble-wrap
 ```
 
-This builds the web bundle and opens it in Electron.
+**PowerShell (Windows):**
 
-## Build the macOS app
+```powershell
+irm https://jd4rider.github.io/bubble-wrap/install.ps1 | iex
+```
+
+**Direct downloads:** DMGs for Apple Silicon and Intel, plus the Windows NSIS installer, are attached to the latest release. The NSIS installer also supports silent installs with `/S`.
+
+Winget manifests are in `winget/manifests` and can be installed from a clone with:
+
+```powershell
+winget install --manifest winget/manifests/j/jd4rider/BubbleWrap/0.1.0
+```
+
+## Build
 
 ```bash
-npm run dist:mac
+npm run start      # build web bundle, launch Electron
+npm run dist:mac   # DMGs (x64 + arm64) and release/mac app bundle
+npm run dist:win   # Windows NSIS target (run on Windows; CI does this)
+npm run build:web  # browser build into docs/play for GitHub Pages
 ```
 
-The packaged app lands at `release/mac/Bubble Wrap.app`. To install it:
+The Windows installer is built by `.github/workflows/windows-build.yml` on a `windows-latest` runner and uploaded as an artifact.
 
-```bash
-ditto "release/mac/Bubble Wrap.app" "/Applications/Bubble Wrap.app"
-```
+## Homebrew tap
 
-The app icon is drawn in `build/icon.svg`, rendered to `build/icon-1024.png`, and converted to `build/icon.icns` (used by electron-builder). If you change the artwork, regenerate the icon set:
+The cask source is `packaging/homebrew/bubble-wrap.rb`. It is published to the `jd4rider/homebrew-bubble-wrap` tap; update the version and both `sha256` values there when releasing.
 
-```bash
-"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new --hide-scrollbars \
-  --force-device-scale-factor=1 --window-size=1024,1024 --default-background-color=00000000 \
-  --screenshot="$PWD/build/icon-1024.png" "file://$PWD/build/icon.svg"
+## Site and ads
 
-rm -rf build/icon.iconset && mkdir -p build/icon.iconset
-for size in 16 32 128 256 512; do
-  sips -z $size $size build/icon-1024.png --out "build/icon.iconset/icon_${size}x${size}.png" >/dev/null
-  sips -z $((size*2)) $((size*2)) build/icon-1024.png --out "build/icon.iconset/icon_${size}x${size}@2x.png" >/dev/null
-done
-iconutil -c icns build/icon.iconset -o build/icon.icns
-```
+The marketing site lives in `docs/` and is served by GitHub Pages. Ads and checkout are configured in `docs/config.js`:
 
-The app is signed ad-hoc at most: it has no notarized Developer ID signature, so redistributing it to other machines would require signing.
+- `adsenseClient` / `adsenseSlot` — real AdSense IDs; while empty the ad slot stays hidden.
+- `checkoutUrl` — hosted payment link for the ad-free upgrade; while empty the button stays disabled.
 
-## Scripts
+The app itself contains no third-party ad code. The icon is drawn in `build/icon.svg`, rendered to `build/icon-1024.png`, and converted to `build/icon.icns`.
 
-- `npm run dev` — Vite dev server
-- `npm run build` — web production build into `dist/`
-- `npm run start` — build and launch in Electron
-- `npm run dist:mac` — package `release/mac/Bubble Wrap.app`
-- `npm run preview` — serve the web build
-- `npm run lint` — oxlint
+Builds are not notarized or code-signed yet: on macOS, right-click the app and choose **Open** the first time.
+
+Made with [Freebuff](https://freebuff.com).
