@@ -14,7 +14,7 @@ cask "bubble-wrap" do
     url "https://github.com/jd4rider/bubble-wrap/releases/download/v#{version}/Bubble-Wrap-mac-arm64.dmg"
   end
 
-  depends_on macos: ">= :big_sur"
+  depends_on macos: :big_sur
 
   app "Bubble Wrap.app"
 
