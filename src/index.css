@@ -1,0 +1,43 @@
+:root {
+  font-family: ui-rounded, 'SF Pro Rounded', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  color: #1e1b4b;
+  background: #eef2ff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(1100px 650px at 12% -12%, #c7d2fe 0%, transparent 60%),
+    radial-gradient(900px 600px at 102% 8%, #fbcfe8 0%, transparent 55%),
+    linear-gradient(160deg, #eef2ff 0%, #e0f2fe 100%);
+  background-attachment: fixed;
+}
+
+/* Electron uses a hidden title bar: leave room for the traffic lights and
+   keep a draggable strip at the top of the window. */
+body.is-electron .app {
+  padding-top: 64px;
+}
+
+body.is-electron::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 44px;
+  z-index: 10;
+  -webkit-app-region: drag;
+}
