@@ -1,16 +1,16 @@
 cask "bubble-wrap" do
-  version "0.1.0"
+  version "0.2.0"
   name "Bubble Wrap"
   desc "Satisfying bubble wrap popping game"
   homepage "https://bubblewrapgame.online/"
 
   on_intel do
-    sha256 "60fb424fdd4e525db524b3a9a5efc3b99c6421ea87dff4bc8408bbab97a1b5ab"
+    sha256 "6362880d2438f7b6ece50a99fd35447e434e5dcc17ebc2f0aeadd55830419be4"
     url "https://github.com/jd4rider/bubble-wrap/releases/download/v#{version}/Bubble-Wrap-mac-x64.dmg"
   end
 
   on_arm do
-    sha256 "f26c1aa32ed8db4c0d7b74a54016853ea8f979c0927aac9a1e710aa8c6ba349c"
+    sha256 "2ed165d98acb6a10628ca2c0c2a8f7d485746b464ce5e59a4312c6ecb3048d4d"
     url "https://github.com/jd4rider/bubble-wrap/releases/download/v#{version}/Bubble-Wrap-mac-arm64.dmg"
   end
 
