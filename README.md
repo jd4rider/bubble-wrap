@@ -20,8 +20,11 @@ Click or drag across the sheet. Press `P` for a random pop, "Fresh sheet" to res
 **Homebrew (macOS):**
 
 ```bash
+brew trust jd4rider/bubble-wrap
 brew install --cask jd4rider/bubble-wrap/bubble-wrap
 ```
+
+Homebrew requires trusting a third-party tap once before loading its cask.
 
 **PowerShell (Windows):**
 

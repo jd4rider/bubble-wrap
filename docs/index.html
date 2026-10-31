@@ -167,7 +167,9 @@
         </p>
 
         <h3>Homebrew (macOS)</h3>
-        <pre><code>brew install --cask jd4rider/bubble-wrap/bubble-wrap</code></pre>
+        <pre><code>brew trust jd4rider/bubble-wrap
+brew install --cask jd4rider/bubble-wrap/bubble-wrap</code></pre>
+        <p class="fine">Homebrew asks you to trust a third-party tap once before loading its cask.</p>
 
         <h3>PowerShell (Windows)</h3>
         <pre><code>irm https://jd4rider.github.io/bubble-wrap/install.ps1 | iex</code></pre>
