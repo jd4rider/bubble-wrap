@@ -172,7 +172,7 @@ export default function App() {
         </span>
         {!IS_ELECTRON && (
           <span className="credit">
-            <a href="https://jd4rider.github.io/bubble-wrap/#download">Get the desktop app</a>
+            <a href="https://bubblewrapgame.online/#download">Get the desktop app</a>
           </span>
         )}
       </p>

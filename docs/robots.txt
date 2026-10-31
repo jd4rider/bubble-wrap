@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://jd4rider.github.io/bubble-wrap/sitemap.xml
+Sitemap: https://bubblewrapgame.online/sitemap.xml

@@ -2,8 +2,8 @@
 
 A tiny pop game — a 12 × 9 sheet of bubble wrap you can pop by clicking or dragging — available in the browser and as a native Electron app for macOS and Windows. Each pop plays a short synthesized sound via the Web Audio API (no audio files).
 
-- Play online: <https://jd4rider.github.io/bubble-wrap/play/>
-- Site and downloads: <https://jd4rider.github.io/bubble-wrap/>
+- Play online: <https://bubblewrapgame.online/play/>
+- Site and downloads: <https://bubblewrapgame.online/>
 - Releases: <https://github.com/jd4rider/bubble-wrap/releases>
 
 ## Play in the browser
@@ -29,7 +29,7 @@ Homebrew requires trusting a third-party tap once before loading its cask.
 **PowerShell (Windows):**
 
 ```powershell
-irm https://jd4rider.github.io/bubble-wrap/install.ps1 | iex
+irm https://bubblewrapgame.online/install.ps1 | iex
 ```
 
 **Direct downloads:** DMGs for Apple Silicon and Intel, plus the Windows NSIS installer, are attached to the latest release. The NSIS installer also supports silent installs with `/S`.

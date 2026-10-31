@@ -2,7 +2,7 @@ cask "bubble-wrap" do
   version "0.1.0"
   name "Bubble Wrap"
   desc "Satisfying bubble wrap popping game"
-  homepage "https://jd4rider.github.io/bubble-wrap/"
+  homepage "https://bubblewrapgame.online/"
 
   on_intel do
     sha256 "60fb424fdd4e525db524b3a9a5efc3b99c6421ea87dff4bc8408bbab97a1b5ab"
