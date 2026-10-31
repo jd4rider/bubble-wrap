@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import BubbleSheet from './BubbleSheet.jsx'
+import { popHaptic } from './haptics.js'
 import { COLS, INDEXES, ROWS } from './sheet.js'
 import {
   LEVELS,
@@ -72,6 +73,7 @@ export default function Journey({ onClassic, muted, onToggleMute, playPop }) {
       next.add(index)
       poppedRef.current = next
       setPopped(next)
+      popHaptic()
       if (!silent) playPop()
     },
     [playPop],

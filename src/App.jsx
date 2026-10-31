@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import './App.css'
 import BubbleSheet from './BubbleSheet.jsx'
+import { popHaptic } from './haptics.js'
 import Journey from './Journey.jsx'
 import { INDEXES, TOTAL } from './sheet.js'
 import usePopSound from './usePopSound.js'
@@ -44,6 +45,7 @@ function Classic({ muted, onJourney, onToggleMute, playPop }) {
       next.add(index)
       poppedRef.current = next
       setPopped(next)
+      popHaptic()
       playPop()
     },
     [playPop],

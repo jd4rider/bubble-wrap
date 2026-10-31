@@ -19,6 +19,8 @@ Click or drag across the sheet. Press `P` for a random pop, "Fresh sheet" to res
 
 **Journey mode:** pick a level, beat the bubble target before the clock runs out, and spend coins on Burst, Chain, and Time Boost. A first clear awards coins and a random power-up; stars and unlocks are saved.
 
+On phones that expose the Vibration API, each pop gives a short haptic tick. Android Chromium browsers support this today; iOS Safari support is inconsistent, so haptics are skipped when the API is unavailable.
+
 ## Install
 
 **Homebrew (macOS):**
