@@ -20,6 +20,8 @@ cask "bubble-wrap" do
 
   zap trash: [
     "~/Library/Application Support/Bubble Wrap",
+    "~/Library/Application Support/bubble-wrap",
+    "~/Library/Caches/bubble-wrap",
     "~/Library/Caches/com.bubblewrap.app",
     "~/Library/Preferences/com.bubblewrap.app.plist",
   ]
