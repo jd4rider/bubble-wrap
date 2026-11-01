@@ -67,7 +67,8 @@ The cask source is `packaging/homebrew/bubble-wrap.rb`. It is published to the `
 
 The marketing site lives in `docs/` and is served by GitHub Pages. Ads and checkout are configured in `docs/config.js`:
 
-- `adsenseClient` / `adsenseSlot` — real AdSense IDs; while empty the ad slot stays hidden.
+- `adsenseClient` — AdSense publisher ID. It matches the verification script in `docs/index.html` and is already set.
+- `adsenseSlot` — an approved ad unit's slot ID; until it is set the ad slot stays hidden.
 - `checkoutUrl` — hosted payment link for the ad-free upgrade; while empty the button stays disabled.
 
 The app itself contains no third-party ad code. The icon is drawn in `build/icon.svg`, rendered to `build/icon-1024.png`, and converted to `build/icon.icns`.

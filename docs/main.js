@@ -41,13 +41,20 @@
     return
   }
 
-  const script = document.createElement('script')
-  script.async = true
-  script.crossOrigin = 'anonymous'
-  script.src =
-    'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=' +
-    encodeURIComponent(config.adsenseClient)
-  document.head.appendChild(script)
+  // index.html already loads the AdSense script with this client; only add it
+  // here if it is somehow missing, so the library never loads twice.
+  const loader = 'pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'
+  const alreadyLoaded = Array.from(document.scripts).some((script) =>
+    script.src.includes(loader),
+  )
+  if (!alreadyLoaded) {
+    const script = document.createElement('script')
+    script.async = true
+    script.crossOrigin = 'anonymous'
+    script.src =
+      'https://' + loader + '?client=' + encodeURIComponent(config.adsenseClient)
+    document.head.appendChild(script)
+  }
 
   const unit = document.createElement('ins')
   unit.className = 'adsbygoogle'
