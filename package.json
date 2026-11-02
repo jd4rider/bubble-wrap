@@ -1,7 +1,7 @@
 {
   "name": "bubble-wrap",
   "private": true,
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A whole sheet of tiny, satisfying bubble wrap pops.",
   "type": "module",
   "main": "electron/main.cjs",
