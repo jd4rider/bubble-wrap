@@ -164,6 +164,18 @@
   font-size: 0.76rem;
 }
 
+.reward-card {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: flex-start;
+  margin-top: 10px;
+  padding: 13px;
+  border-radius: 18px;
+  background: rgba(251, 191, 36, 0.13);
+  border: 1px dashed rgba(180, 83, 9, 0.34);
+}
+
 .journey-hud {
   width: min(880px, 100%);
   display: flex;

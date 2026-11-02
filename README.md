@@ -68,10 +68,19 @@ The cask source is `packaging/homebrew/bubble-wrap.rb`. It is published to the `
 The marketing site lives in `docs/` and is served by GitHub Pages. Ads and checkout are configured in `docs/config.js`:
 
 - `adsenseClient` — AdSense publisher ID. It matches the verification script in `docs/index.html` and is already set.
-- `adsenseSlot` — an approved ad unit's slot ID; until it is set the ad slot stays hidden.
+- `adsenseSlot` — an approved ad unit's slot ID; until it is set the site's ad slot stays hidden.
 - `checkoutUrl` — hosted payment link for the ad-free upgrade; while empty the button stays disabled.
 
-The app itself contains no third-party ad code. The icon is drawn in `build/icon.svg`, rendered to `build/icon-1024.png`, and converted to `build/icon.icns`.
+### In-game ads
+
+The browser game can show interstitial and rewarded ads through Google's Ad Placement API (H5 Games Ads) — see `src/ads.js`. It is inert until two things happen:
+
+1. AdSense approves `bubblewrapgame.online`.
+2. H5 Games Ads is switched on for the account, then `H5_GAMES_ENABLED` in `src/ads.js` is flipped to `true`.
+
+Once enabled, a level start shows an interstitial (at most once every 90 seconds, on every second level start, never with the clock running) and the Journey shop offers a rewarded ad that grants 10 coins only when the player watches it to the end. Setting `localStorage['bubble-wrap-ads-free'] = '1'` suppresses every ad — that is the hook the paid removal will use.
+
+The Electron app never loads ad code: Google's AdSense policies do not allow its ads to be distributed inside a downloadable application.
 
 Builds are not notarized or code-signed yet: on macOS, right-click the app and choose **Open** the first time.
 

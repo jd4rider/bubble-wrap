@@ -3,6 +3,7 @@ import BubbleSheet from './BubbleSheet.jsx'
 import { popHaptic } from './haptics.js'
 import { COLS, INDEXES, ROWS } from './sheet.js'
 import {
+  AD_REWARD_COINS,
   LEVELS,
   POWER_UPS,
   SHOP_PRICE,
@@ -12,6 +13,7 @@ import {
   starsFor,
 } from './journey.js'
 import { loadJourney, saveJourney } from './storage.js'
+import { canOfferRewarded, showInterstitial, showRewardedAd } from './ads.js'
 import './Journey.css'
 
 const formatTime = (ms) => {
@@ -32,6 +34,10 @@ export default function Journey({ onClassic, muted, onToggleMute, playPop }) {
   const endAtRef = useRef(0)
   const [result, setResult] = useState(null)
   const chainRef = useRef(null)
+  const [adPlaying, setAdPlaying] = useState(false)
+  const adPlayingRef = useRef(false)
+  const [rewardPending, setRewardPending] = useState(false)
+  const rewardPendingRef = useRef(false)
 
   useEffect(() => {
     let cancelled = false
@@ -126,7 +132,7 @@ export default function Journey({ onClassic, muted, onToggleMute, playPop }) {
     [clearChain],
   )
 
-  const startLevel = useCallback(
+  const beginLevel = useCallback(
     (id) => {
       const level = LEVELS.find((item) => item.id === id)
       if (!level) return
@@ -142,6 +148,22 @@ export default function Journey({ onClassic, muted, onToggleMute, playPop }) {
       setPhase('playing')
     },
     [clearChain],
+  )
+
+  // Level starts are the natural break point for an interstitial: the clock has
+  // not started yet, so an ad never eats into a player's time.
+  const startLevel = useCallback(
+    (id) => {
+      if (adPlayingRef.current) return
+      adPlayingRef.current = true
+      setAdPlaying(true)
+      showInterstitial(`level-${id}`).finally(() => {
+        adPlayingRef.current = false
+        setAdPlaying(false)
+        beginLevel(id)
+      })
+    },
+    [beginLevel],
   )
 
   useEffect(() => {
@@ -217,6 +239,18 @@ export default function Journey({ onClassic, muted, onToggleMute, playPop }) {
     },
     [clearChain, commit, playPop, pop],
   )
+
+  const claimAdCoins = async () => {
+    if (rewardPendingRef.current) return
+    rewardPendingRef.current = true
+    setRewardPending(true)
+    const granted = await showRewardedAd('shop-coins')
+    rewardPendingRef.current = false
+    setRewardPending(false)
+    if (!granted) return
+    commit((previous) => ({ ...previous, coins: previous.coins + AD_REWARD_COINS }))
+    playPop()
+  }
 
   const buyPowerUp = (type) => {
     const current = stateRef.current
@@ -326,9 +360,29 @@ export default function Journey({ onClassic, muted, onToggleMute, playPop }) {
               </div>
             ))}
           </div>
+
+          {canOfferRewarded() && (
+            <div className="reward-card">
+              <span className="shop-icon">🎬 Free coins</span>
+              <span className="shop-desc">
+                Watch a short ad to earn {AD_REWARD_COINS} coins. Optional, and no real money
+                changes hands.
+              </span>
+              <button
+                type="button"
+                className="button ghost small"
+                disabled={rewardPending}
+                onClick={claimAdCoins}
+              >
+                {rewardPending ? 'Loading ad…' : `Watch an ad — ${AD_REWARD_COINS} 🪙`}
+              </button>
+            </div>
+          )}
         </div>
 
-        <p className="hint">Clear a sheet before the clock runs out to unlock the next one.</p>
+          <p className="hint">
+          {adPlaying ? 'Short ad, then your sheet…' : 'Clear a sheet before the clock runs out to unlock the next one.'}
+        </p>
       </main>
     )
   }

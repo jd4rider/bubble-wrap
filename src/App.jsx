@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import './App.css'
 import BubbleSheet from './BubbleSheet.jsx'
 import { popHaptic } from './haptics.js'
+import { initAds, setAdSound } from './ads.js'
 import Journey from './Journey.jsx'
 import { INDEXES, TOTAL } from './sheet.js'
 import usePopSound from './usePopSound.js'
@@ -12,6 +13,14 @@ export default function App() {
   const [mode, setMode] = useState('classic')
   const [muted, setMuted] = useState(false)
   const playPop = usePopSound(muted)
+
+  useEffect(() => {
+    initAds()
+  }, [])
+
+  useEffect(() => {
+    setAdSound(!muted)
+  }, [muted])
 
   if (mode === 'journey') {
     return (

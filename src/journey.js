@@ -29,6 +29,8 @@ export const POWER_UPS = [
 
 export const SHOP_PRICE = 40
 
+export const AD_REWARD_COINS = 10
+
 const clamp = (value, min, max) => Math.min(max, Math.max(min, value))
 
 export function createDefaultJourney() {
